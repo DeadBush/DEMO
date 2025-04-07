@@ -19,7 +19,7 @@
         "@azure/ai-text-analytics": "^5.1.0",
         "botbuilder": "^4.23.2",
         "dotenv": "~8.2.0",
-        "restify": "^9.1.0"
+        "restify": "^11.1.0"
     },
     "devDependencies": {
         "eslint": "^7.0.0",
