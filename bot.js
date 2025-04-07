@@ -65,5 +65,32 @@ async function analyzeText(userText) {
     return overallResponse;
 }
 
+
+// DirectLine Token
+server.post('/directline/token', async (req, res) => {
+
+    const id = (req.body && req.body.id)? `dl_${req.body.id}`: `dl_default_user`
+
+    const options = {
+        method: 'POST',
+        headers: { 
+            'Authorization': `Bearer 4nCOXzAzRZsYjGpRTSN5QjVS5AAIhoPqCVzN93mrxR9cj0rA4d6fJQQJ99BDACqBBLyXJ3w3AAAaACOGQVKT`,
+            'Content-Type': 'application/json',
+         },
+        url: 'https://directline.botframework.com/v3/directline/tokens/generate', 
+        data: {
+            user: { id }
+        }
+    };
+
+    try {
+        const { data } = await axios(options);
+        res.send(data);
+    } catch ({ message }) {
+        res.status(403);
+        res.send({ message });
+    }
+});
+
 module.exports.EchoBot = EchoBot;
 module.exports.analyzeText = analyzeText;
